@@ -1,14 +1,14 @@
 <?php declare(strict_types=1);
 
-namespace MateuszMesek\DocumentDataCatalogCategoryIndexer\Command;
+namespace MateuszMesek\DocumentDataCatalogCategoryIndexer;
 
 use ArrayIterator;
 use Magento\Catalog\Model\ResourceModel\Category\CollectionFactory;
-use MateuszMesek\DocumentDataIndexerApi\Command\GetEntityIdsByDimensionsInterface;
 use MateuszMesek\DocumentDataIndexerApi\DimensionResolverInterface;
+use MateuszMesek\DocumentDataIndexerApi\EntityIdsResolverInterface;
 use Traversable;
 
-class GetEntityIdsByDimensions implements GetEntityIdsByDimensionsInterface
+class EntityIdsResolver implements EntityIdsResolverInterface
 {
     private DimensionResolverInterface $storeIdResolver;
     private CollectionFactory $collectionFactory;
@@ -22,7 +22,7 @@ class GetEntityIdsByDimensions implements GetEntityIdsByDimensionsInterface
         $this->collectionFactory = $collectionFactory;
     }
 
-    public function execute(array $dimensions): Traversable
+    public function resolve(array $dimensions): Traversable
     {
         $storeId = $this->storeIdResolver->resolve($dimensions);
 

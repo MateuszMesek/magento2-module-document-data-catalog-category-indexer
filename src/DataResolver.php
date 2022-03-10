@@ -1,13 +1,13 @@
 <?php declare(strict_types=1);
 
-namespace MateuszMesek\DocumentDataCatalogCategoryIndexer\Command;
+namespace MateuszMesek\DocumentDataCatalogCategoryIndexer;
 
 use MateuszMesek\DocumentDataCatalogCategory\Command\GetDocumentDataByCategoryIdAndStoreId;
-use MateuszMesek\DocumentDataIndexerApi\Command\GetDocumentsByDimensionsAndEntityIdsInterface;
+use MateuszMesek\DocumentDataIndexerApi\DataResolverInterface;
 use MateuszMesek\DocumentDataIndexerApi\DimensionResolverInterface;
 use Traversable;
 
-class GetDocumentsByDimensionsAndEntityIds implements GetDocumentsByDimensionsAndEntityIdsInterface
+class DataResolver implements DataResolverInterface
 {
     private DimensionResolverInterface $storeIdResolver;
     private GetDocumentDataByCategoryIdAndStoreId $getDocumentDataByCategoryIdAndStoreId;
@@ -21,7 +21,7 @@ class GetDocumentsByDimensionsAndEntityIds implements GetDocumentsByDimensionsAn
         $this->getDocumentDataByCategoryIdAndStoreId = $getDocumentDataByCategoryIdAndStoreId;
     }
 
-    public function execute(array $dimensions, Traversable $entityIds): Traversable
+    public function resolve(array $dimensions, Traversable $entityIds): Traversable
     {
         $storeId = $this->storeIdResolver->resolve($dimensions);
 

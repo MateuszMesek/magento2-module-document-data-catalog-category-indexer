@@ -1,28 +1,24 @@
 <?xml version="1.0" ?>
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
-    <virtualType name="MateuszMesek\DocumentCatalogCategoryIndexer\Action" type="MateuszMesek\DocumentIndexer\Action">
+    <virtualType name="MateuszMesek\DocumentDataCatalogCategoryIndexer\DimensionProvider" type="MateuszMesek\DocumentDataIndexer\DimensionProvider\WithDocumentNameProvider">
         <arguments>
-            <argument name="dimensionProvider" xsi:type="object">MateuszMesek\DocumentCatalogCategoryIndexer\DimensionProvider</argument>
-        </arguments>
-    </virtualType>
-    <virtualType name="MateuszMesek\DocumentCatalogCategoryIndexer\DimensionProvider" type="MateuszMesek\DocumentIndexer\DimensionProvider">
-        <arguments>
-            <argument name="document" xsi:type="const">Magento\Catalog\Model\Category::ENTITY</argument>
+            <argument name="documentName" xsi:type="const">Magento\Catalog\Model\Category::ENTITY</argument>
             <argument name="dimensionProvider" xsi:type="object">Magento\Store\Model\StoreDimensionProvider</argument>
         </arguments>
     </virtualType>
-    <type name="MateuszMesek\DocumentIndexer\Command\GetDocumentsByDimensionsAndEntityIds\Pool">
+    <type name="MateuszMesek\DocumentDataCatalogCategoryIndexer\DataResolver">
         <arguments>
-            <argument name="documents" xsi:type="array">
-                <item name="catalog_category" xsi:type="string">MateuszMesek\DocumentCatalogCategoryIndexer\Command\GetDocumentsByDimensionsAndEntityIds</item>
-            </argument>
+            <argument name="storeIdResolver" xsi:type="object">MateuszMesek\DocumentDataIndexer\DimensionResolver\StoreIdResolver</argument>
         </arguments>
     </type>
-    <type name="MateuszMesek\DocumentIndexer\Command\GetEntityIdsByDimensions\Pool">
+    <type name="MateuszMesek\DocumentDataCatalogCategoryIndexer\EntityIdsResolver">
         <arguments>
-            <argument name="documents" xsi:type="array">
-                <item name="catalog_category" xsi:type="string">MateuszMesek\DocumentCatalogCategoryIndexer\Command\GetEntityIdsByDimensions</item>
-            </argument>
+            <argument name="storeIdResolver" xsi:type="object">MateuszMesek\DocumentDataIndexer\DimensionResolver\StoreIdResolver</argument>
+        </arguments>
+    </type>
+    <type name="MateuszMesek\DocumentDataCatalogCategoryIndexer\IndexNameResolver">
+        <arguments>
+            <argument name="storeIdResolver" xsi:type="object">MateuszMesek\DocumentDataIndexer\DimensionResolver\StoreIdResolver</argument>
         </arguments>
     </type>
 </config>
