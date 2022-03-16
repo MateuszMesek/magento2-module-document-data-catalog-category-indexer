@@ -26,7 +26,13 @@ class DataResolver implements DataResolverInterface
         $storeId = $this->storeIdResolver->resolve($dimensions);
 
         foreach ($entityIds as $entityId) {
-            yield $this->getDocumentDataByCategoryIdAndStoreId->execute($entityId, $storeId);
+            $data = $this->getDocumentDataByCategoryIdAndStoreId->execute($entityId, $storeId);
+
+            if (empty($data)) {
+                return;
+            }
+
+            yield $data;
         }
     }
 }
