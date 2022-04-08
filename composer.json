@@ -6,7 +6,8 @@
         "magento/framework": "*",
         "magento/module-catalog": "*",
         "mateuszmesek-magento2/module-document-data-catalog-category": "*",
-        "mateuszmesek-magento2/module-document-data-indexer": "*"
+        "mateuszmesek-magento2/module-document-data-index": "*",
+        "mateuszmesek-magento2/module-document-data-index-api": "*"
     },
     "license": [
         "MIT"

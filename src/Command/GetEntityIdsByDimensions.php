@@ -4,8 +4,8 @@ namespace MateuszMesek\DocumentDataCatalogCategoryIndexer\Command;
 
 use ArrayIterator;
 use Magento\Catalog\Model\ResourceModel\Category\CollectionFactory;
-use MateuszMesek\DocumentDataIndexerApi\Command\GetEntityIdsByDimensionsInterface;
-use MateuszMesek\DocumentDataIndexerApi\DimensionResolverInterface;
+use MateuszMesek\DocumentDataIndexApi\Command\GetEntityIdsByDimensionsInterface;
+use MateuszMesek\DocumentDataIndexApi\DimensionResolverInterface;
 use Traversable;
 
 class GetEntityIdsByDimensions implements GetEntityIdsByDimensionsInterface

@@ -3,8 +3,8 @@
 namespace MateuszMesek\DocumentDataCatalogCategoryIndexer\Command;
 
 use MateuszMesek\DocumentDataCatalogCategory\Command\GetDocumentDataByCategoryIdAndStoreId;
-use MateuszMesek\DocumentDataIndexerApi\Command\GetDocumentsByDimensionsAndEntityIdsInterface;
-use MateuszMesek\DocumentDataIndexerApi\DimensionResolverInterface;
+use MateuszMesek\DocumentDataIndexApi\Command\GetDocumentsByDimensionsAndEntityIdsInterface;
+use MateuszMesek\DocumentDataIndexApi\DimensionResolverInterface;
 use Traversable;
 
 class GetDocumentsByDimensionsAndEntityIds implements GetDocumentsByDimensionsAndEntityIdsInterface
