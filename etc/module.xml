@@ -4,7 +4,7 @@
         <sequence>
             <module name="MateuszMesek_DocumentDataCatalogCategory"/>
             <module name="MateuszMesek_DocumentDataIndex"/>
-            <module name="MateuszMesek_DocumentDataIndexApi"/>
+            <module name="MateuszMesek_DocumentDataIndexIndexerApi"/>
             <module name="MateuszMesek_DocumentDataIndexIndexer"/>
         </sequence>
     </module>

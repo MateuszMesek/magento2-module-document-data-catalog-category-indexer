@@ -4,8 +4,8 @@ namespace MateuszMesek\DocumentDataCatalogCategoryIndexer;
 
 use ArrayIterator;
 use Magento\Catalog\Model\ResourceModel\Category\CollectionFactory;
-use MateuszMesek\DocumentDataIndexApi\DimensionResolverInterface;
-use MateuszMesek\DocumentDataIndexApi\EntityIdsResolverInterface;
+use MateuszMesek\DocumentDataIndexIndexerApi\DimensionResolverInterface;
+use MateuszMesek\DocumentDataIndexIndexerApi\EntityIdsResolverInterface;
 use Traversable;
 
 class EntityIdsResolver implements EntityIdsResolverInterface
