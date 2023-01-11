@@ -2,8 +2,7 @@
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"  xsi:noNamespaceSchemaLocation="urn:magento:module:MateuszMesek_DocumentDataIndexIndexer:etc/document_data_indexer.xsd">
     <document name="catalog_category">
         <dimensionProvider name="Magento\Store\Model\StoreDimensionProvider"/>
-        <entityIdsResolver name="MateuszMesek\DocumentDataCatalogCategoryIndexer\EntityIdsResolver"/>
-        <indexNameResolver name="MateuszMesek\DocumentDataCatalogCategoryIndexer\IndexNameResolver"/>
-        <dataResolver name="MateuszMesek\DocumentDataCatalogCategoryIndexer\DataResolver"/>
+        <entityIdsResolver name="MateuszMesek\DocumentDataCatalogCategoryIndexer\Model\IdsResolver"/>
+        <dataResolver name="MateuszMesek\DocumentDataCatalogCategoryIndexer\Model\DataResolver"/>
     </document>
 </config>

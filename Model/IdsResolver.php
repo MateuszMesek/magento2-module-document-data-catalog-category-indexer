@@ -1,37 +1,26 @@
 <?php declare(strict_types=1);
 
-namespace MateuszMesek\DocumentDataCatalogCategoryIndexer;
+namespace MateuszMesek\DocumentDataCatalogCategoryIndexer\Model;
 
 use Magento\Catalog\Api\CategoryRepositoryInterface;
 use Magento\Catalog\Model\ResourceModel\Category\CollectionFactory;
 use Magento\Framework\DB\Query\Generator as QueryGenerator;
 use Magento\Store\Model\StoreManagerInterface;
-use MateuszMesek\DocumentDataIndexIndexerApi\DimensionResolverInterface;
-use MateuszMesek\DocumentDataIndexIndexerApi\EntityIdsResolverInterface;
+use MateuszMesek\DocumentDataIndexIndexerApi\Model\DimensionResolverInterface;
+use MateuszMesek\DocumentDataIndexIndexerApi\Model\IdsResolverInterface;
 use PDO;
 use Traversable;
 
-class EntityIdsResolver implements EntityIdsResolverInterface
+class IdsResolver implements IdsResolverInterface
 {
-    private DimensionResolverInterface $storeIdResolver;
-    private StoreManagerInterface $storeManager;
-    private CategoryRepositoryInterface $categoryRepository;
-    private CollectionFactory $collectionFactory;
-    private QueryGenerator $queryGenerator;
-
     public function __construct(
-        DimensionResolverInterface $storeIdResolver,
-        StoreManagerInterface $storeManager,
-        CategoryRepositoryInterface $categoryRepository,
-        CollectionFactory $collectionFactory,
-        QueryGenerator $queryGenerator
+        private readonly DimensionResolverInterface  $storeIdResolver,
+        private readonly StoreManagerInterface       $storeManager,
+        private readonly CategoryRepositoryInterface $categoryRepository,
+        private readonly CollectionFactory           $collectionFactory,
+        private readonly QueryGenerator              $queryGenerator
     )
     {
-        $this->storeIdResolver = $storeIdResolver;
-        $this->storeManager = $storeManager;
-        $this->categoryRepository = $categoryRepository;
-        $this->collectionFactory = $collectionFactory;
-        $this->queryGenerator = $queryGenerator;
     }
 
     public function resolve(array $dimensions): Traversable
